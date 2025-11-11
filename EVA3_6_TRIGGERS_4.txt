@@ -1,0 +1,126 @@
+Microsoft Windows [Versión 10.0.26100.6899]
+(c) Microsoft Corporation. Todos los derechos reservados.
+
+C:\Users\Juan Pablo>mysqlsh
+MySQL Shell 8.0.43
+
+Copyright (c) 2016, 2025, Oracle and/or its affiliates.
+Oracle is a registered trademark of Oracle Corporation and/or its affiliates.
+Other names may be trademarks of their respective owners.
+
+Type '\help' or '\?' for help; '\quit' to exit.
+ MySQL  JS > \sql
+Switching to SQL mode... Commands end with ;
+ MySQL  SQL > \connect --mc root@localhost
+Creating a Classic session to 'root@localhost'
+Fetching global names for auto-completion... Press ^C to stop.
+Your MySQL connection id is 16
+Server version: 8.0.43 MySQL Community Server - GPL
+No default schema selected; type \use <schema> to set one.
+ MySQL  localhost:3306 ssl  SQL > show tables;
+ERROR: 1046 (3D000): No database selected
+ MySQL  localhost:3306 ssl  SQL > use tbd3;
+Default schema set to `tbd3`.
+Fetching global names, object names from `tbd3` for auto-completion... Press ^C to stop.
+ MySQL  localhost:3306 ssl  tbd3  SQL > show tables;
++----------------+
+| Tables_in_tbd3 |
++----------------+
+| actor          |
+| datos          |
+| persona        |
+| prueba         |
++----------------+
+4 rows in set (0.0013 sec)
+ MySQL  localhost:3306 ssl  tbd3  SQL > desc personas;
+ERROR: 1146 (42S02): Table 'tbd3.personas' doesn't exist
+ MySQL  localhost:3306 ssl  tbd3  SQL > desc persona;
++------------+-------------+------+-----+---------+-------+
+| Field      | Type        | Null | Key | Default | Extra |
++------------+-------------+------+-----+---------+-------+
+| rfc        | varchar(10) | NO   | PRI | NULL    |       |
+| nombre     | varchar(50) | NO   |     | NULL    |       |
+| ap_paterno | varchar(50) | NO   |     | NULL    |       |
+| ap_materno | varchar(50) | YES  |     | NULL    |       |
+| fecha_nac  | date        | YES  |     insert into persona value("MAIE040510", "Matias",  "Acosta", "Corona", "2004-05-10");
+Query OK, 1 row affected (0.0183 sec)---insert into persona value("MAIE040510", "Matias",  "Acosta", "Corona", "2004-05-10");
+ MySQL  localhost:3306 ssl  tbd3  SQL > insert into persona value("MAIE040510", "Matias",  "Acosta", "Corona", "2004-05-10");;
+ MySQL  localhost:3306 ssl  tbd3  SQL > insert into persona value("MAIE040510", "Matias",  "Acosta", "Corona", "2004-05-10");
+ MySQL  localhost:3306 ssl  tbd3  SQL > insert into persona value("MAIE040510", "Matias",  "Acosta", "Corona", "2004-05-10")
+ MySQL  localhost:3306 ssl  tbd3  SQL > insert into persona value("MAIE040510", "Matias",  "Acosta", "Corona", "2004-05-10"
+ MySQL  localhost:3306 ssl  tbd3  SQL > insert into persona value("MAIE040510", "Matias",  "Acosta", "Corona", "2004-05-10");
+ERROR: 1062 (23000): Duplicate entry 'AOCM040510' for key 'persona.PRIMARY'
+ MySQL  localhost:3306 ssl  tbd3  SQL > insert into persona value("MAIE40510", "Matias",  "Acosta", "Corona", "2004-05-10");
+ERROR: 1062 (23000): Duplicate entry 'AOCM040510' for key 'persona.PRIMARY'
+ MySQL  localhost:3306 ssl  tbd3  SQL > insert into persona value("MAIE40510", "Matias",  "Acosta", "Corona", "2004-05-11");
+Query OK, 1 row affected (0.0125 sec)
+ MySQL  localhost:3306 ssl  tbd3  SQL > select @mensaje;
++----------------------------+
+| @mensaje                   |
++----------------------------+
+| Persona agregada con exito |
++----------------------------+
+1 row in set (0.0003 sec)
+ MySQL  localhost:3306 ssl  tbd3  SQL > create table bitacora (
+                                     -> descripcion varchar(50));
+Query OK, 0 rows affected (0.0244 sec)
+ MySQL  localhost:3306 ssl  tbd3  SQL > select * from bitacora;
+Empty set (0.0011 sec)
+ MySQL  localhost:3306 ssl  tbd3  SQL > delete from personas where rfc = "AVME";
+ERROR: 1146 (42S02): Table 'tbd3.personas' doesn't exist
+ MySQL  localhost:3306 ssl  tbd3  SQL > delete from personas where rfc = "MAIE";
+ERROR: 1146 (42S02): Table 'tbd3.personas' doesn't exist
+ MySQL  localhost:3306 ssl  tbd3  SQL > delete from personas where rfc = "MAIE40510";
+ERROR: 1146 (42S02): Table 'tbd3.personas' doesn't exist
+ MySQL  localhost:3306 ssl  tbd3  SQL > select * from bitacora;
+Empty set (0.0003 sec)
+ MySQL  localhost:3306 ssl  tbd3  SQL > delete from personas where rfc = "AVME";
+ERROR: 1146 (42S02): Table 'tbd3.personas' doesn't exist
+ MySQL  localhost:3306 ssl  tbd3  SQL > delete from persona where rfc = "AVME";
+Query OK, 0 rows affected (0.0004 sec)
+ MySQL  localhost:3306 ssl  tbd3  SQL > select * from bitacora;
+Empty set (0.0004 sec)
+ MySQL  localhost:3306 ssl  tbd3  SQL > select * from bitacora;
+Empty set (0.0004 sec)
+ MySQL  localhost:3306 ssl  tbd3  SQL > delete from personas where rfc = "avme";
+ERROR: 1146 (42S02): Table 'tbd3.personas' doesn't exist
+ MySQL  localhost:3306 ssl  tbd3  SQL > delete from personas where rfc = "AVNE";
+ERROR: 1146 (42S02): Table 'tbd3.personas' doesn't exist
+ MySQL  localhost:3306 ssl  tbd3  SQL > delete from persona where rfc = "AVNE";
+Query OK, 0 rows affected (0.0007 sec)
+ MySQL  localhost:3306 ssl  tbd3  SQL > select * from bitacora;
+Empty set (0.0005 sec)
+ MySQL  localhost:3306 ssl  tbd3  SQL > delete from persona where rfc = "AVxE";
+Query OK, 0 rows affected (0.0004 sec)
+ MySQL  localhost:3306 ssl  tbd3  SQL > select * from bitacora;
+Empty set (0.0004 sec)
+ MySQL  localhost:3306 ssl  tbd3  SQL > desc personas;
+ERROR: 1146 (42S02): Table 'tbd3.personas' doesn't exist
+ MySQL  localhost:3306 ssl  tbd3  SQL > desc persona;
++------------+-------------+------+-----+---------+-------+
+| Field      | Type        | Null | Key | Default | Extra |
++------------+-------------+------+-----+---------+-------+
+| rfc        | varchar(10) | NO   | PRI | NULL    |       |
+| nombre     | varchar(50) | NO   |     | NULL    |       |
+| ap_paterno | varchar(50) | NO   |     | NULL    |       |
+| ap_materno | varchar(50) | YES  |     | NULL    |       |
+| fecha_nac  | date        | YES  |     | NULL    |       |
++------------+-------------+------+-----+---------+-------+
+5 rows in set (0.0015 sec)
+ MySQL  localhost:3306 ssl  tbd3  SQL > insert into personas (nombre, ap_paterno, ap_materno, fecha_nac)
+                                     -> values ("esteban", "mendoza", "molinar", "1999-08-29");
+ERROR: 1146 (42S02): Table 'tbd3.personas' doesn't exist
+ MySQL  localhost:3306 ssl  tbd3  SQL > insert into persona (nombre, ap_paterno, ap_materno, fecha_nac) values ("esteban", "mendoza", "molinar", "1999-08-29");
+Query OK, 1 row affected (0.0127 sec)
+ MySQL  localhost:3306 ssl  tbd3  SQL > select * from personas;
+ERROR: 1146 (42S02): Table 'tbd3.personas' doesn't exist
+ MySQL  localhost:3306 ssl  tbd3  SQL > select * from persona;
++------------+---------+------------+------------+------------+
+| rfc        | nombre  | ap_paterno | ap_materno | fecha_nac  |
++------------+---------+------------+------------+------------+
+| AOCM040510 | Matias  | Acosta     | Corona     | 2004-05-10 |
+| AOCM040511 | Matias  | Acosta     | Corona     | 2004-05-11 |
+| MEME990829 | esteban | mendoza    | molinar    | 1999-08-29 |
++------------+---------+------------+------------+------------+
+3 rows in set (0.0004 sec)
+ MySQL  localhost:3306 ssl  tbd3  SQL >
